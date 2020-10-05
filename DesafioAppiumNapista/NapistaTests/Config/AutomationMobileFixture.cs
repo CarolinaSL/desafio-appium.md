@@ -15,7 +15,7 @@ namespace NapistaTests.Config
         public AutomationMobileFixture()
         {
             Configuration = new ConfigurationHelper();
-            BrowserHelper = new AppiumHelper();
+            BrowserHelper = new AppiumHelper(Configuration);
         }
     }
 }

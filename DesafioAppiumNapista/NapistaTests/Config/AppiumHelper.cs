@@ -1,7 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Enums;
-using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace NapistaTests.Config
     {
         public IWebDriver WebDriver;
         public readonly ConfigurationHelper Configuration;
-        public WebDriverWait Wait;
+        public OpenQA.Selenium.Support.UI.WebDriverWait Wait;
 
         public AppiumHelper(ConfigurationHelper configuration)
         {
@@ -21,8 +22,10 @@ namespace NapistaTests.Config
             driverOption.AddAdditionalCapability(MobileCapabilityType.DeviceName, configuration.DeviceName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.App, configuration.app);
 
+            WebDriver = new AndroidDriver<IWebElement>(new Uri(configuration.AppiumServer), driverOption);
 
-            Wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(30));
+
+            Wait = new OpenQA.Selenium.Support.UI.WebDriverWait(WebDriver, TimeSpan.FromSeconds(30));
         }
 
         public string ObterUrl()
