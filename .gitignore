@@ -12,3 +12,6 @@
 *.CopyComplete
 *.props
 *.targets
+/DesafioAppiumNapista/.vs/DesafioAppiumNapista/config
+*.v2
+*.pdb
