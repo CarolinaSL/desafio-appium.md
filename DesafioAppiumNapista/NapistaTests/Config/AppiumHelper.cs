@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Enums;
+using OpenQA.Selenium.Appium.Interfaces;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace NapistaTests.Config
 {
     public class AppiumHelper
     {
-        public IWebDriver WebDriver;
+        public AppiumDriver<AndroidElement> Driver;
         public readonly ConfigurationHelper Configuration;
         public OpenQA.Selenium.Support.UI.WebDriverWait Wait;
 
@@ -22,20 +23,20 @@ namespace NapistaTests.Config
             driverOption.AddAdditionalCapability(MobileCapabilityType.DeviceName, configuration.DeviceName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.App, configuration.app);
 
-            WebDriver = new AndroidDriver<IWebElement>(new Uri(configuration.AppiumServer), driverOption);
+            Driver = new AndroidDriver<AndroidElement>(new Uri(configuration.AppiumServer), driverOption);
 
-
-            Wait = new OpenQA.Selenium.Support.UI.WebDriverWait(WebDriver, TimeSpan.FromSeconds(30));
+            var contexts = ((IContextAware)Driver).Contexts;
+            Wait = new OpenQA.Selenium.Support.UI.WebDriverWait(Driver, TimeSpan.FromSeconds(30));
         }
 
         public string ObterUrl()
         {
-            return WebDriver.Url;
+            return Driver.Url;
         }
 
         public void IrParaUrl(string url)
         {
-            WebDriver.Navigate().GoToUrl(url);
+            Driver.Navigate().GoToUrl(url);
         }
 
         public bool ValidarConteudoUrl(string conteudo)
@@ -46,6 +47,12 @@ namespace NapistaTests.Config
         public void ClicarBotaoPorId(string botaoId)
         {
             var botao = Wait.Until(ExpectedConditions.ElementIsVisible(By.Id(botaoId)));
+            botao.Click();
+        }
+
+        public void ClicarBotaoPorTexto(string texto)
+        {
+            var botao = Wait.Until(ExpectedConditions.ElementIsVisible(By.Name(texto)));
             botao.Click();
         }
 
@@ -65,16 +72,26 @@ namespace NapistaTests.Config
             return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
         }
 
+        public string ObterTextoElementoPorId(string id)
+        {
+             return Wait.Until(ExpectedConditions.ElementIsVisible(By.Id(id))).Text;
+        }
+
         public void PreencherTextBoxPorId(string idCampo, string valorCampo)
         {
             var campo = Wait.Until(ExpectedConditions.ElementIsVisible(By.Id(idCampo)));
             campo.SendKeys(valorCampo);
         }
+
+        public void PreencherTextBoxPorXPath(string path)
+        {
+            var campo = Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(path)));
+        }
         private bool ElementoExistente(By by)
         {
             try
             {
-                WebDriver.FindElement(by);
+                Driver.FindElement(by);
                 return true;
             }
             catch (NoSuchElementException)
@@ -83,15 +100,25 @@ namespace NapistaTests.Config
             }
         }
 
-        public bool ValidarSeElementoExistePorIr(string id)
+        public bool ValidarSeElementoExistePorId(string id)
         {
             return ElementoExistente(By.Id(id));
         }
 
+        public bool ValidarSeElementoExistePorXPath(string path)
+        {
+            return ElementoExistente(By.XPath(path));
+        }
+
+        public bool ValidarSeElementoExistePorTexto(string texto)
+        {
+            return ElementoExistente(By.Name(texto));
+        }
+
         public void Dispose()
         {
-            WebDriver.Quit();
-            WebDriver.Dispose();
+            Driver.Quit();
+            Driver.Dispose();
         }
     }
 }
