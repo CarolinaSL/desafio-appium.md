@@ -37,8 +37,7 @@ namespace NapistaTests.Login
             while (Helper.ValidarSeElementoExistePorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]"))
             {
                 Helper.ClicarPorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]");
-                presentationCount++;
-       
+                
             }
 
         }
@@ -56,6 +55,13 @@ namespace NapistaTests.Login
 
         }
 
+        public void PreecherEmailDeSenhaEsquecida(string email)
+        {
+
+            Helper.PreencherTextBoxPorXPath("//android.widget.EditText[contains(@text, 'email')]", email);
+            
+        }
+
         public bool ValidarTelaAtualPorTextoEmBotao(string texto)
         {
             return Helper.ValidarSeElementoExistePorXPath($"//android.widget.Button[@text='{texto}']");
@@ -63,7 +69,7 @@ namespace NapistaTests.Login
 
         public bool ValidarTelaAtualPorTextoEmView(string texto)
         {
-            return Helper.ValidarSeElementoExistePorXPath($"//android.view.View[contains(@text,'{texto}']");
+            return Helper.ValidarSeElementoExistePorXPath($"//android.view.View[contains(@text,'{texto}')]");
         }
 
         public bool ValidarPreenchimentoFormularioLogin(Usuario usuario)
@@ -78,5 +84,19 @@ namespace NapistaTests.Login
             Helper.ClicarPorXPath("//android.widget.Button[@text='Acessar conta']");
         }
 
+        public void ClicarEmEsqueciSenha()
+        {
+            Helper.ClicarPorXPath("//android.view.View[contains(@text,'Esqueceu')]");
+        }
+
+        public  void ClicarEmResetarSenha()
+        {
+            Helper.ClicarPorXPath("//android.widget.Button[contains(@text,'Resetar')]");
+        }
+
+        public void ClicarEmNaoSeiLogin()
+        {
+            Helper.ClicarPorXPath("//android.view.View[contains(@text,'Não sei')]");
+        }
     }
 }
