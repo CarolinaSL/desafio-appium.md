@@ -36,6 +36,12 @@ Senha: qee123
 * A execucação é gráfica, portanto as ações aparecerão na tela.
 
 
+### Foram implementados 3 testes com diferentes Cenários:
+  1. Usuário deseja fazer login com sucesso a partir do usuário e senha repassados
+  2. Usuário deseja fazer login, porém não lembra nenhuma informação de login
+  3. Usuário deseja fazer login, porém não coloca um e-mail válido
+
+
 ## Como rodar?
 
 * Para rodar localmente basta abrir o Test Explorer no .net Core e clicar em Run.
