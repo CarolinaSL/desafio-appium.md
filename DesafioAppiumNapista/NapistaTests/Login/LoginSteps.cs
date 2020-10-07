@@ -17,6 +17,7 @@ namespace NapistaTests.Login
             this.fixture = fixture;
             _loginPage = new LoginPage(fixture.BrowserHelper);
         }
+
         [Given(@"que o Usuário acesse o aplicativo dando as permissões necessárias")]
         public void DadoQueOUsuarioAcesseOAplicativoDandoAsPermissoesNecessarias()
         {
@@ -28,7 +29,10 @@ namespace NapistaTests.Login
         [Given(@"visualize as telas inicias de apresentação")]
         public void DadoVisualizeAsTelasIniciasDeApresentacao()
         {
+            var quantidadeTelasApresentacao = 3;
             _loginPage.VisualizarTelasDeApresentacao();
+
+            Assert.Equal(quantidadeTelasApresentacao, _loginPage.presentationCount);
 
         }
 
@@ -59,6 +63,10 @@ namespace NapistaTests.Login
             };
             _loginPage.PreecherFormularioLogin(usuario);
 
+           var result =  _loginPage.ValidarPreenchimentoFormularioLogin(usuario);
+
+            Assert.True(result);
+
         }
 
        
@@ -66,13 +74,15 @@ namespace NapistaTests.Login
         [When(@"Clicar no botão Acessar Conta")]
         public void QuandoClicarNoBotaoAcessarConta()
         {
-           
+            _loginPage.AcessarConta();
         }
         
         [Then(@"será redirecionado para tela inicial do aplicativo")]
         public void EntaoSeraRedirecionadoParaTelaInicialDoAplicativo()
         {
-           
+            var result = _loginPage.ValidarTelaAtualPorTextoEmView("Seja bem vindo!");
+
+            Assert.True(result, "Alguma coisa saiu errado na validação da tela!");
         }
 
         

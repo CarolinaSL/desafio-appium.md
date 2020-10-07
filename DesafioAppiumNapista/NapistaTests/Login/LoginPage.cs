@@ -1,7 +1,9 @@
 ﻿using NapistaTests.Config;
 using NapistaTests.Models;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -11,7 +13,8 @@ namespace NapistaTests.Login
     {
         protected readonly AppiumHelper Helper;
         public int permissionCount = 0;
-        public string UltimaPágina;
+        public int presentationCount = 0;
+
         public LoginPage(AppiumHelper helper)
         {
             Helper = helper;
@@ -19,7 +22,6 @@ namespace NapistaTests.Login
 
         public void FornecerPermissao()
         {
-            var element = Helper.ObterTextoElementoPorId("com.android.packageinstaller:id/permission_allow_button");
            
             while (Helper.ValidarSeElementoExistePorId("com.android.packageinstaller:id/permission_allow_button"))
             {
@@ -31,21 +33,27 @@ namespace NapistaTests.Login
 
         public void VisualizarTelasDeApresentacao()
         {
-            Helper.ClicarPorXPath("//android.widget.Button[@text='Próximo']");
-            Helper.ClicarPorXPath("//android.widget.Button[@text='Próximo']");
-            Helper.ClicarPorXPath("//android.widget.Button[@text='Vamos começar']");
+            var elem = Helper.ValidarSeElementoExistePorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]");
+            while (Helper.ValidarSeElementoExistePorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]"))
+            {
+                Helper.ClicarPorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]");
+                presentationCount++;
+       
+            }
 
         }
 
         public void IrParaTelaAutenticacao()
         {
-            Helper.ClicarPorXPath("//android.view.View[@Tex='Já tenho conta'");
+            Helper.ClicarPorXPath("//android.view.View[@text='Já tenho conta']");
         }
 
         public void PreecherFormularioLogin(Usuario usuario)
         {
-           var emailElement =  Helper.ObterElementoPorXPath("//android.widget.EditText[@text='Seu e-mail']");
-            var senhaElement = Helper.ObterElementoPorXPath("//android.widget.EditText[@text='Senha']");
+
+            Helper.PreencherTextBoxPorXPath("//android.widget.EditText[@text='Seu e-mail']", usuario.Email);
+            Helper.PreencherTextBoxPorXPath("//android.widget.EditText[@text='Senha']", usuario.Password);
+
         }
 
         public bool ValidarTelaAtualPorTextoEmBotao(string texto)
@@ -55,7 +63,20 @@ namespace NapistaTests.Login
 
         public bool ValidarTelaAtualPorTextoEmView(string texto)
         {
-            return Helper.ValidarSeElementoExistePorXPath($"//android.view.View[@text='{texto}']");
+            return Helper.ValidarSeElementoExistePorXPath($"//android.view.View[contains(@text,'{texto}']");
         }
+
+        public bool ValidarPreenchimentoFormularioLogin(Usuario usuario)
+        {
+            if (!Helper.ObterValorTextBoxPorXPath("//android.widget.EditText[contains(@text, 'Seu e-mail')]").Contains(usuario.Email)) return false;
+
+            return true;
+        }
+
+        public void AcessarConta()
+        {
+            Helper.ClicarPorXPath("//android.widget.Button[@text='Acessar conta']");
+        }
+
     }
 }
