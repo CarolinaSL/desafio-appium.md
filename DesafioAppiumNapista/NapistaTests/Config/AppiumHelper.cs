@@ -3,6 +3,7 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.Interfaces;
+using OpenQA.Selenium.Interactions;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace NapistaTests.Config
             driverOption.AddAdditionalCapability(MobileCapabilityType.PlatformName, configuration.PlatformName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.DeviceName, configuration.DeviceName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.App, configuration.app);
-
+           
             Driver = new AndroidDriver<AndroidElement>(new Uri(configuration.AppiumServer), driverOption);
 
             var contexts = ((IContextAware)Driver).Contexts;
@@ -69,7 +70,14 @@ namespace NapistaTests.Config
 
         public IWebElement ObterElementoPorXPath(string xPath)
         {
-            return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
+           return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
+        }
+
+        internal string ObterValorTextBoxPorXPath(string path)
+        {
+            var elem = Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(path)));
+            return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(path)))
+                .GetAttribute("text");
         }
 
         public string ObterTextoElementoPorId(string id)
@@ -83,9 +91,12 @@ namespace NapistaTests.Config
             campo.SendKeys(valorCampo);
         }
 
-        public void PreencherTextBoxPorXPath(string path)
+        public void PreencherTextBoxPorXPath(string path, string valorCampo)
         {
             var campo = Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(path)));
+            campo.Click();
+            Actions action = new Actions(Driver);
+            action.SendKeys(valorCampo).Perform();
         }
         private bool ElementoExistente(By by)
         {
