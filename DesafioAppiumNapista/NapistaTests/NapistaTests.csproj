@@ -27,6 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="app-release.apk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
