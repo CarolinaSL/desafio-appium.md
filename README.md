@@ -7,49 +7,38 @@ Será necessário realizar no mínimo a autenticação no app.
 Usuário: testedasilva1@grr.la
 Senha: qee123
 
-## Requisitos Técnicos
+## Começando
 
-* O desafio deve ser feito na linguagem node|python. (preferencialmente node)
-* Obrigatoriamente deve-se utilizar o Appium.
-* A apk estará disponível no repositorio.
-* Utilizaremos AWS Device Farm para execução dos testes, caso os mesmos já estejam preparados, será um diferencial.
+* Plataforma utilizada : .Net Core 3.1
+* Appium Server (Desktop) : 1.18.2 
+* A apk estará disponível no repositório.
+* AWS Device Farm não pode ser usado para execução dos testes, pois não há suporte para C# aparentemente.
+* Verificar se o caminho para ANDROID_HOME e JAVA_HOME estão ok.
 
-## Critérios de Avaliação
+## Configurações de emulador para criação no Android Studio
 
-O desafio será avaliado através de quatro critérios.
+* Name : Pixel 3 API 28
+* Android: Android 9.0
+* CPU: X86
 
-### Entrega
+## Capabilities( disponível no appSettings.json do projeto)
 
-* O código possui algum controle de dependências?
-* O resultado final está completo para ser executado?
-* O resultado final atende ao que se propõe fazer?
-* O resultado final atende totalmente aos requisitos propostos?
+* AppiumServer: http://localhost:4723/wd/hub
+* deviceName : emulator-5554
+* platformName : android
+* avd: Pixel_3_API_28
 
-### Boas Práticas
+## Características
 
-* O código está de acordo com o guia de estilo do node?
-* O código está bem estruturado?
-* O código está fluente na linguagem?
-* O código faz o uso correto de Design Patterns?
+* Uso de Specflow para uso de metodologia BDD
+* Uso de XUnit
+* Uso de Page Objects Pattern
+* A execucação é gráfica, portanto as ações aparecerão na tela.
 
-### Documentação
 
-* O código foi entregue com um arquivo de README claro de como se guiar?
-* O código possui comentários pertinentes?
-* O código está em algum controle de versão?
-* Os commits são pequenos e consistentes?
-* As mensagens de commit são claras?
+## Como rodar?
 
-### Código Limpo
+* Para rodar localmente basta abrir o Test Explorer no .net Core e clicar em Run.
+* O Appium será iniciado junto com avd a partir do código, portanto, para que funcione basta que o emulador esteja corretamente configurado de acordo com as especificações citadas anteriormente.
 
-* O código possibilita expansão para novas funcionalidades?
-* O código é Don't Repeat Yourself?
-* O código é fácil de compreender?
 
-## Material de Estudo
-
-* [Node](https://nodejs.org)
-* [Python](https://www.python.org)
-* [Introduction to Appium](http://appium.io/docs/en/about-appium/intro/)
-* [Getting Started with Appium](http://appium.io/docs/en/about-appium/getting-started/index.html)
-* [Appium Node.js para aplicativos Android e o AWS Device Farm](https://docs.aws.amazon.com/pt_br/devicefarm/latest/developerguide/test-types-android-appium-node.html)
