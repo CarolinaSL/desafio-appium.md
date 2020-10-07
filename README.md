@@ -44,7 +44,7 @@ Senha: qee123
 
 ## Como rodar?
 
-* Para rodar localmente basta abrir o Test Explorer no .net Core e clicar em Run.
+* Para rodar localmente basta abrir o Test Explorer no .net Core e clicar em Run em cima da suíte de testes ou de algum teste em específico.
 * O Appium será iniciado junto com avd a partir do código, portanto, para que funcione basta que o emulador esteja corretamente configurado de acordo com as especificações citadas anteriormente.
 
 
