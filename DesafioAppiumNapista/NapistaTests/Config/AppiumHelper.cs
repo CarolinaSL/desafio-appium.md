@@ -23,6 +23,8 @@ namespace NapistaTests.Config
             driverOption.AddAdditionalCapability(MobileCapabilityType.PlatformName, configuration.PlatformName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.DeviceName, configuration.DeviceName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.App, configuration.app);
+            driverOption.AddAdditionalCapability("avd", "Pixel_3_API_28");
+            var cap = driverOption.ToCapabilities();
            
             Driver = new AndroidDriver<AndroidElement>(new Uri(configuration.AppiumServer), driverOption);
 
@@ -118,7 +120,15 @@ namespace NapistaTests.Config
 
         public bool ValidarSeElementoExistePorXPath(string path)
         {
-            return ElementoExistente(By.XPath(path));
+            try
+            {
+                var element = ObterElementoPorXPath(path);
+                return true;
+            } catch (Exception)
+            {
+                return false;
+            }
+               
         }
 
         public bool ValidarSeElementoExistePorTexto(string texto)
@@ -130,6 +140,7 @@ namespace NapistaTests.Config
         {
             Driver.Quit();
             Driver.Dispose();
+           
         }
     }
 }
