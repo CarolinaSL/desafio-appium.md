@@ -23,8 +23,7 @@ namespace NapistaTests.Config
             driverOption.AddAdditionalCapability(MobileCapabilityType.PlatformName, configuration.PlatformName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.DeviceName, configuration.DeviceName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.App, configuration.app);
-            driverOption.AddAdditionalCapability("avd", "Pixel_3_API_28");
-            var cap = driverOption.ToCapabilities();
+            driverOption.AddAdditionalCapability("avd", configuration.avd );
            
             Driver = new AndroidDriver<AndroidElement>(new Uri(configuration.AppiumServer), driverOption);
 
