@@ -49,7 +49,7 @@ namespace NapistaTests.Login
 
 
         [When(@"Preencher os dados do formulário do login")]
-        public void QuandoPreencherOsDadosDoFormularioDoLogin(Table table)
+        public void QuandoPreencherOsDadosDoFormularioDoLogin()
         {
 
             _loginPage.PreecherFormularioLogin(fixture.usuario);
