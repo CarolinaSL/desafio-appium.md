@@ -6,8 +6,6 @@ using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Interactions;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NapistaTests.Config
 {
@@ -23,8 +21,8 @@ namespace NapistaTests.Config
             driverOption.AddAdditionalCapability(MobileCapabilityType.PlatformName, configuration.PlatformName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.DeviceName, configuration.DeviceName);
             driverOption.AddAdditionalCapability(MobileCapabilityType.App, configuration.app);
-            driverOption.AddAdditionalCapability("avd", configuration.avd );
-           
+            driverOption.AddAdditionalCapability("avd", configuration.avd);
+
             Driver = new AndroidDriver<AndroidElement>(new Uri(configuration.AppiumServer), driverOption);
 
             var contexts = ((IContextAware)Driver).Contexts;
@@ -71,7 +69,7 @@ namespace NapistaTests.Config
 
         public IWebElement ObterElementoPorXPath(string xPath)
         {
-           return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
+            return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
         }
 
         internal string ObterValorTextBoxPorXPath(string path)
@@ -83,7 +81,7 @@ namespace NapistaTests.Config
 
         public string ObterTextoElementoPorId(string id)
         {
-             return Wait.Until(ExpectedConditions.ElementIsVisible(By.Id(id))).Text;
+            return Wait.Until(ExpectedConditions.ElementIsVisible(By.Id(id))).Text;
         }
 
         public void PreencherTextBoxPorId(string idCampo, string valorCampo)
@@ -123,11 +121,12 @@ namespace NapistaTests.Config
             {
                 var element = ObterElementoPorXPath(path);
                 return true;
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 return false;
             }
-               
+
         }
 
         public bool ValidarSeElementoExistePorTexto(string texto)
@@ -137,9 +136,11 @@ namespace NapistaTests.Config
 
         public void Dispose()
         {
+            Driver.CloseApp();
             Driver.Quit();
             Driver.Dispose();
            
+
         }
     }
 }

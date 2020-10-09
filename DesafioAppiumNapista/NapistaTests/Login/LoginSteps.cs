@@ -1,6 +1,4 @@
 ﻿using NapistaTests.Config;
-using NapistaTests.Models;
-using System;
 using TechTalk.SpecFlow;
 using Xunit;
 
@@ -25,7 +23,7 @@ namespace NapistaTests.Login
 
             Assert.Equal(3, _loginPage.permissionCount);
         }
-        
+
         [Given(@"visualize as telas iniciais de apresentação")]
         public void DadoVisualizeAsTelasIniciaisDeApresentacao()
         {
@@ -38,7 +36,7 @@ namespace NapistaTests.Login
         [Given(@"Visualize tela de Login")]
         public void DadoVisualizeTelaDeLogin()
         {
-           var result = _loginPage.ValidarTelaAtualPorTextoEmBotao("Ainda não tenho conta");
+            var result = _loginPage.ValidarTelaAtualPorTextoEmBotao("Ainda não tenho conta");
 
             Assert.True(result);
         }
@@ -55,23 +53,23 @@ namespace NapistaTests.Login
         [When(@"Preencher os dados do formulário do login")]
         public void QuandoPreencherOsDadosDoFormularioDoLogin(Table table)
         {
-            
+
             _loginPage.PreecherFormularioLogin(fixture.usuario);
 
-           var result =  _loginPage.ValidarPreenchimentoFormularioLogin(fixture.usuario);
+            var result = _loginPage.ValidarPreenchimentoFormularioLogin(fixture.usuario);
 
             Assert.True(result);
 
         }
 
-       
-        
+
+
         [When(@"Clicar no botão Acessar Conta")]
         public void QuandoClicarNoBotaoAcessarConta()
         {
             _loginPage.AcessarConta();
         }
-        
+
         [Then(@"será redirecionado para tela inicial do aplicativo")]
         public void EntaoSeraRedirecionadoParaTelaInicialDoAplicativo()
         {
