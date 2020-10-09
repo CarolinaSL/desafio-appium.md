@@ -121,19 +121,13 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
  testRunner.When("o usuário clicar em Já tenho Conta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Dados"});
-                table1.AddRow(new string[] {
-                            "E-mail"});
-                table1.AddRow(new string[] {
-                            "Senha"});
 #line 12
- testRunner.And("Preencher os dados do formulário do login", ((string)(null)), table1, "E ");
+ testRunner.And("Preencher os dados do formulário do login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 16
+#line 13
  testRunner.And("Clicar no botão Acessar Conta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 17
+#line 14
  testRunner.Then("será redirecionado para tela inicial do aplicativo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             }
@@ -148,7 +142,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Usuário esquece a senha do login e deseja resetar senha com email não válido", null, tagsOfScenario, argumentsOfScenario);
-#line 19
+#line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -168,28 +162,28 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 20
+#line 17
  testRunner.Given("que o Usuário acesse o aplicativo dando as permissões necessárias", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
-#line 21
+#line 18
  testRunner.And("visualize as telas iniciais de apresentação", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 22
+#line 19
  testRunner.And("Visualize tela de Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 23
+#line 20
  testRunner.And("o usuário clicar em Já tenho Conta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 24
+#line 21
  testRunner.When("Clicar em esqueci minha senha", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
-#line 25
+#line 22
  testRunner.Then("será redirecionado para tela de recuperação de senha para preencher email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
-#line 26
+#line 23
  testRunner.And("Preencherá email não válido no formulário", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 27
+#line 24
  testRunner.And("Clicará em em Resetar senha, recebendo mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             }
@@ -204,7 +198,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Usuário não lembra nem email e nem senha para login", null, tagsOfScenario, argumentsOfScenario);
-#line 29
+#line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -224,25 +218,25 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 30
+#line 27
  testRunner.Given("que o Usuário acesse o aplicativo dando as permissões necessárias", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
-#line 31
+#line 28
  testRunner.And("visualize as telas iniciais de apresentação", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 32
+#line 29
  testRunner.And("Visualize tela de Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 33
+#line 30
  testRunner.And("o usuário clicar em Já tenho Conta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 34
+#line 31
  testRunner.When("Clicar em esqueci minha senha", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
-#line 35
+#line 32
  testRunner.Then("será redirecionado para tela de recuperação de senha para preencher email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
-#line 36
+#line 33
  testRunner.And("clicará em não sei meu login, recendo mensagem para entrar em contato com o admin" +
                         "istrador", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden

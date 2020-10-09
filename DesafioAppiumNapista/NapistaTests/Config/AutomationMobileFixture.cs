@@ -1,8 +1,6 @@
 ﻿using NapistaTests.Models;
 using OpenQA.Selenium.Appium.Service;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace NapistaTests.Config
@@ -32,12 +30,13 @@ namespace NapistaTests.Config
                 Password = "qee123"
             };
 
-           
+
         }
 
         public void Dispose()
         {
-            service.Dispose();
+            service?.Dispose();
+
         }
     }
 }

@@ -1,11 +1,5 @@
 ﻿using NapistaTests.Config;
 using NapistaTests.Models;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xunit;
 
 namespace NapistaTests.Login
 {
@@ -22,7 +16,7 @@ namespace NapistaTests.Login
 
         public void FornecerPermissao()
         {
-           
+
             while (Helper.ValidarSeElementoExistePorId("com.android.packageinstaller:id/permission_allow_button"))
             {
                 Helper.ClicarBotaoPorId("com.android.packageinstaller:id/permission_allow_button");
@@ -33,11 +27,10 @@ namespace NapistaTests.Login
 
         public void VisualizarTelasDeApresentacao()
         {
-            var elem = Helper.ValidarSeElementoExistePorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]");
             while (Helper.ValidarSeElementoExistePorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]"))
             {
                 Helper.ClicarPorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]");
-                
+
             }
 
         }
@@ -59,7 +52,7 @@ namespace NapistaTests.Login
         {
 
             Helper.PreencherTextBoxPorXPath("//android.widget.EditText[contains(@text, 'email')]", email);
-            
+
         }
 
         public bool ValidarTelaAtualPorTextoEmBotao(string texto)
@@ -89,7 +82,7 @@ namespace NapistaTests.Login
             Helper.ClicarPorXPath("//android.view.View[contains(@text,'Esqueceu')]");
         }
 
-        public  void ClicarEmResetarSenha()
+        public void ClicarEmResetarSenha()
         {
             Helper.ClicarPorXPath("//android.widget.Button[contains(@text,'Resetar')]");
         }
