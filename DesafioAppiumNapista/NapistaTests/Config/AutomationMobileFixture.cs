@@ -35,7 +35,8 @@ namespace NapistaTests.Config
 
         public void Dispose()
         {
-            service.Dispose();
+            service?.Dispose();
+
         }
     }
 }

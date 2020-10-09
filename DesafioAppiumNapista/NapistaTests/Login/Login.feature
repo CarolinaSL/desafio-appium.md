@@ -10,9 +10,6 @@ Cenário: Realizar Login com sucesso no primeiro acesso já tendo conta
 	E Visualize tela de Login
 	Quando o usuário clicar em Já tenho Conta
 	E Preencher os dados do formulário do login
-		| Dados  |
-		| E-mail |
-		| Senha  |
 	E Clicar no botão Acessar Conta
 	Então será redirecionado para tela inicial do aplicativo
 

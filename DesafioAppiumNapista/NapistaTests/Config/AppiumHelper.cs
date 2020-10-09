@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Enums;
-using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Interactions;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -25,7 +24,6 @@ namespace NapistaTests.Config
 
             Driver = new AndroidDriver<AndroidElement>(new Uri(configuration.AppiumServer), driverOption);
 
-            var contexts = ((IContextAware)Driver).Contexts;
             Wait = new OpenQA.Selenium.Support.UI.WebDriverWait(Driver, TimeSpan.FromSeconds(30));
         }
 
@@ -72,9 +70,9 @@ namespace NapistaTests.Config
             return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
         }
 
-        internal string ObterValorTextBoxPorXPath(string path)
+        public string ObterValorTextBoxPorXPath(string path)
         {
-            var elem = Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(path)));
+  
             return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(path)))
                 .GetAttribute("text");
         }
@@ -119,14 +117,13 @@ namespace NapistaTests.Config
         {
             try
             {
-                var element = ObterElementoPorXPath(path);
+                ObterElementoPorXPath(path);
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
-
         }
 
         public bool ValidarSeElementoExistePorTexto(string texto)
@@ -139,7 +136,6 @@ namespace NapistaTests.Config
             Driver.CloseApp();
             Driver.Quit();
             Driver.Dispose();
-           
 
         }
     }

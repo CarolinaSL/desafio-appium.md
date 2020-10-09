@@ -27,7 +27,6 @@ namespace NapistaTests.Login
 
         public void VisualizarTelasDeApresentacao()
         {
-            var elem = Helper.ValidarSeElementoExistePorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]");
             while (Helper.ValidarSeElementoExistePorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]"))
             {
                 Helper.ClicarPorXPath("//android.widget.Button[contains(@text,'Próximo') or contains(@text, 'Vamos começar')]");

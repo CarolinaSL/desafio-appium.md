@@ -27,10 +27,8 @@ namespace NapistaTests.Login
         [Given(@"visualize as telas iniciais de apresentação")]
         public void DadoVisualizeAsTelasIniciaisDeApresentacao()
         {
-            var quantidadeTelasApresentacao = 3;
             _loginPage.VisualizarTelasDeApresentacao();
 
-            //Assert.Equal(quantidadeTelasApresentacao, _loginPage.presentationCount);
         }
 
         [Given(@"Visualize tela de Login")]
