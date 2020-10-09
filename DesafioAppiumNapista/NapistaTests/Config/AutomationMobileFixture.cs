@@ -1,6 +1,7 @@
 ﻿using NapistaTests.Models;
 using OpenQA.Selenium.Appium.Service;
 using System;
+using System.IO;
 using Xunit;
 
 namespace NapistaTests.Config
@@ -11,15 +12,14 @@ namespace NapistaTests.Config
     {
         public AppiumHelper BrowserHelper;
         public readonly Usuario usuario;
-        public readonly AppiumLocalService service;
+        public AppiumLocalService service;
         public readonly ConfigurationHelper Configuration;
+        public FileInfo log;
 
 
         public AutomationMobileFixture()
         {
-            service = new AppiumServiceBuilder().Build();
-
-            service.Start();
+            
 
             Configuration = new ConfigurationHelper();
             BrowserHelper = new AppiumHelper(Configuration);
@@ -30,12 +30,24 @@ namespace NapistaTests.Config
                 Password = "qee123"
             };
 
+        }
 
+        public void IniciarServidor()
+        {
+            log = new FileInfo("Log.txt");
+            service = new AppiumServiceBuilder().WithLogFile(log).Build();
+            service.Start();
+
+            
         }
 
         public void Dispose()
         {
+            
+            
+           // if (log.Exists) File.Delete(log.FullName);
             service?.Dispose();
+            
 
         }
     }
