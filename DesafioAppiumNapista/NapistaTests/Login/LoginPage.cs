@@ -7,7 +7,6 @@ namespace NapistaTests.Login
     {
         protected readonly AppiumHelper Helper;
         public int permissionCount = 0;
-        public int presentationCount = 0;
 
         public LoginPage(AppiumHelper helper)
         {

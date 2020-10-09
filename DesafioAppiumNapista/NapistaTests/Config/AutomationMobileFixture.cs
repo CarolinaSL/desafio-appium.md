@@ -12,14 +12,14 @@ namespace NapistaTests.Config
     {
         public AppiumHelper BrowserHelper;
         public readonly Usuario usuario;
-        public AppiumLocalService service;
+        private AppiumLocalService service;
         public readonly ConfigurationHelper Configuration;
         public FileInfo log;
 
 
         public AutomationMobileFixture()
         {
-            
+            IniciarServidor();
 
             Configuration = new ConfigurationHelper();
             BrowserHelper = new AppiumHelper(Configuration);
@@ -43,12 +43,7 @@ namespace NapistaTests.Config
 
         public void Dispose()
         {
-            
-            
-           // if (log.Exists) File.Delete(log.FullName);
             service?.Dispose();
-            
-
         }
     }
 }
