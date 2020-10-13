@@ -46,7 +46,7 @@ Comando para instalação via prompt  -> `npm install -g appium `
 
 ## Como rodar?
 
-* Para rodar localmente basta abrir o Test Explorer no .net Core e clicar em Run em cima da suíte de testes ou de algum teste em específico.(É possível que haja problema de conexão com o appium e este feche o socket causando erro no teste, portanto recomenda-se que se execute individidualmente caso o suíte dê algum erro de conexão.)
+* Para rodar localmente basta abrir o Test Explorer no Visual Studio e clicar em Run em cima da suíte de testes ou de algum teste em específico.(É possível que haja problema de conexão com o appium e este feche o socket causando erro no teste, portanto recomenda-se que se execute individidualmente caso o suíte dê algum erro de conexão.)
 * O Appium será iniciado junto com avd a partir do código, portanto, para que funcione basta que o emulador esteja corretamente configurado de acordo com as especificações citadas anteriormente.
 * Caso o emulador abra, mas o teste quebre é possível que tenha dado timetout, recomenda-se rodar novamente sem fechar o emulador, pois dependerá do tempo que o emulador abra e se conecte com o servidor appium.
 
