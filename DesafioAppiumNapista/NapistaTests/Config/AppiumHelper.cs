@@ -133,7 +133,7 @@ namespace NapistaTests.Config
 
         public void Dispose()
         {
-            Driver.CloseApp();
+           
             Driver.Quit();
             Driver.Dispose();
 
